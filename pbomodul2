@@ -1,0 +1,179 @@
+import java.util.Scanner;
+class VCD{
+    Scanner ketik = new Scanner(System.in);
+    String judul, aktor, sutradara, publisher, kategori;
+    int stok;
+    void tampilkan(){
+        System.out.println("\n<=== "+this.judul+" ===>");
+        System.out.println("Judul Film : "+this.judul);
+        System.out.println("Aktor      : "+this.aktor);
+        System.out.println("Sutradara  : "+this.sutradara);
+        System.out.println("Publisher  : "+this.publisher);
+        System.out.println("Kategori   : "+this.kategori);
+        System.out.println("Stok       : "+this.stok);
+    }
+    int inputStok(){
+        System.out.print("Jumlah Stok: ");
+        this.stok = ketik.nextInt();
+        return this.stok;
+    }
+}
+class VCDDua extends VCD{
+}
+public class DuaSatu {
+    public static void main(String[] args){
+        Scanner ketik = new Scanner(System.in);
+        int abc = 0;
+        String mno, xyz, pnj;
+        VCD f1 = new VCD();
+        VCD f2 = new VCD();
+        VCDDua f3 = new VCDDua();
+        
+        f1.judul = "Iron Man";
+        f1.aktor = "Robert Downey Jr.";
+        f1.sutradara = "Jon Favreau";
+        f1.publisher = "Marvel Studio";
+        f1.kategori = "R";
+        f1.stok = 4;
+        
+        f2.judul = "Captain America: The First Avenger";
+        f2.aktor = "Chris Evans";
+        f2.sutradara = "Joe Johnston";
+        f2.publisher = "Marvel Studio";
+        f2.kategori = "R";
+        f2.stok = 3;
+        
+        while (abc==0) {
+            menu();
+            System.out.print("Pilih aksi: ");
+            mno = ketik.nextLine();
+            switch (mno) {
+                case "1":
+                    System.out.println("\nMasukkan data VCD:");
+                    System.out.print("Judul Film: ");
+                    f3.judul = ketik.nextLine();
+                    System.out.print("Nama Aktor: ");
+                    f3.aktor = ketik.nextLine();
+                    System.out.print("Nama Sutradara: ");
+                    f3.sutradara = ketik.nextLine();
+                    System.out.print("Perusahaan Publisher: ");
+                    f3.publisher = ketik.nextLine();
+                    System.out.print("Kategori Umur: ");
+                    f3.kategori = ketik.nextLine();
+                    f3.inputStok();
+                    System.out.println("Data telah disimpan");
+                    abc = 1;
+                    break;
+                case "2":
+                    listVCD(f1.judul, f2.judul);
+                    System.out.print("Pilih nomor: ");
+                    xyz = ketik.nextLine();
+                    switch (xyz){
+                        case "1":
+                            f1.tampilkan();
+                            System.out.print("Pinjam VCD Film ini? y/t => ");
+                            pnj = ketik.nextLine();
+                            switch (pnj){
+                                case "y":
+                                    System.out.println("Berhasil meminjam VCD");
+                                    System.out.println("Terima Kasih");
+                                    return;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case "2":
+                            f2.tampilkan();
+                            System.out.print("Pinjam VCD Film ini? y/t => ");
+                            pnj = ketik.nextLine();
+                            switch (pnj){
+                                case "y":
+                                    System.out.println("Berhasil meminjam VCD");
+                                    System.out.println("Terima Kasih");
+                                    return;
+                                default:
+                                    break;
+                            }
+                            break;
+                    }
+                    break;
+                case "3":
+                    return;
+                default:
+                    break;
+            }
+        }
+        while (abc==1){
+            menu();
+            System.out.print("Pilih aksi: ");
+            mno = ketik.nextLine();
+            switch (mno) {
+                case "1":
+                    System.out.println("Data Penuh");
+                    break;
+                case "2":
+                    listVCD(f1.judul, f2.judul);
+                    System.out.println("3. " + f3.judul);
+                    System.out.print("Pilih nomor: ");
+                    xyz = ketik.nextLine();
+                    switch (xyz){
+                        case "1":
+                            f1.tampilkan();
+                            System.out.print("Pinjam VCD Film ini? y/t => ");
+                            pnj = ketik.nextLine();
+                            switch (pnj){
+                                case "y":
+                                    System.out.println("Berhasil meminjam VCD");
+                                    System.out.println("Terima Kasih");
+                                    return;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case "2":
+                            f2.tampilkan();
+                            System.out.print("Pinjam VCD Film ini? y/t => ");
+                            pnj = ketik.nextLine();
+                            switch (pnj){
+                                case "y":
+                                    System.out.println("Berhasil meminjam VCD");
+                                    System.out.println("Terima Kasih");
+                                    return;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case "3":
+                            f3.tampilkan();
+                            System.out.print("Pinjam VCD Film ini? y/t => ");
+                            pnj = ketik.nextLine();
+                            switch (pnj){
+                                case "y":
+                                    System.out.println("Berhasil meminjam VCD");
+                                    System.out.println("Terima Kasih");
+                                    return;
+                                default:
+                                    break;
+                            }
+                            break;
+                    }
+                    break;
+                case "3":
+                    return;
+                default:
+                    break;
+            }
+        }
+    }
+    private static void menu(){
+        System.out.println("\n<== Program Rental VCD ==>");
+        System.out.println("1. Tambah VCD");
+        System.out.println("2. Pinjam VCD");
+        System.out.println("3. Exit");
+    }
+    private static void listVCD(String a, String b){
+        System.out.println("\n<== List VCD ==>");
+        System.out.println("1. " + a);
+        System.out.println("2. " + b);
+    }
+}
